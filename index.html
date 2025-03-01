@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title
+      data-inspector-line="209"
+      data-inspector-column="9"
+      data-inspector-relative-path="shared\pages\order\index.js"
+      data-react-helmet="data-inspector-line,data-inspector-column,data-inspector-relative-path"
+    >
+      شمرون کباب - سفارش آنلاین - مجموعه
+    </title>
+
+    <link rel="stylesheet" href="./leaflet/leaflet.css" />
+    <script defre src="./leaflet/leaflet.js"></script>
+    <link href="./Images/Icons/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <div>
+          <a href="#">
+            <img class="header-right-logo" src="./Logos/header-logo.png" alt="Shemroon Kabab Logo" />
+          </a>
+        </div>
+        <div class="header-left">
+          <ul class="header-left-links">
+            <li><a href="#">صفحه اصلی</a></li>
+            <li><a href="#">سفارش اینترنتی</a></li>
+            <li><a href="#">درباره</a></li>
+            <li><a href="#">تماس با ما</a></li>
+            <li>
+              <button class="header-login-btn">
+                <div class="header-login">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4 login-icon"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                    /></svg
+                  >ورود / عضویت
+                </div>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-address-total">
+        <p class="hero-address-location">تجریش</p>
+        <p class="hero-address">آدرس: میدان تجریش، ضلع شمال شرقی</p>
+        <div class="hero-changing-location-total">
+          <button class="hero-changing-location-btn">
+            <span>تغییر مجموعه</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+        </div>
+        <div class="hero-acceptation"></div>
+      </div>
+    </div>
+    <!-- main -->
+    <div class="overlay hidden"></div>
+    <div class="login-active hidden">
+      <div class="login-active-top">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+          id="close-btn-login-active"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </div>
+      <div class="login-active-middle">
+        <p>لطفا شماره موبايل خود را وارد نماييد</p>
+        <input type="text" id="" placeholder=" (09xxxxxxxxx) شماره موبایل" />
+      </div>
+      <div class="login-active-down">
+        <button>
+          <span>ادامه</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="location-active hidden">
+      <div class="location-active-top">
+        <span>لطفا مجموعه مورد نظر خود را انتخاب کنید</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+          id="close-btn-location-active"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </div>
+      <div class="location-active-down">
+        <div id="location-tajrish">
+          <span>تجریش</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+            />
+          </svg>
+        </div>
+        <div id="location-niavaran">
+          <span>نیاوران</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+            />
+          </svg>
+        </div>
+        <div id="location-dasht-behesht">
+          <span>دشت بهشت</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- main -->
+    <!-- card active -->
+    <div class="main-container">
+      <div class="card-active hidden">
+        <div class="card-active-top">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+            id="close-btn-card-active"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </div>
+        <img src="./Images/main-cource/jooje-file-bone-3.jpg" alt="" />
+        <div class="card-active-name-and-price">
+          <p class="card-active-name">کباب لقمه گوسفندی شمرون</p>
+          <span class="card-active-price">۶۵۰,۰۰۰</span> <span>تومان</span>
+          <p class="card-active-ingredients"></p>
+        </div>
+        <div class="card-active-down">
+          <button class="card-active-down-add-to-basket">
+            <span>افزودن به سبد خرید :</span>
+            <span
+              ><span class="card-active-price card-active-price-total">۶۵۰,۰۰۰</span>
+              <span>تومان</span>
+            </span>
+          </button>
+
+          <div class="card-active-down-sub-and-add">
+            <div class="sub-left-record">
+              <button class="card-active-down-sub hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                </svg>
+              </button>
+            </div>
+            <span>۱</span>
+            <button class="card-active-down-add">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- end of card active -->
+
+      <div class="main-right">
+        <button class="main-right-nav-order-btn">
+          <span>منوی سفارش</span>
+        </button>
+        <button class="main-right-nav-info-btn">
+          <span>اطلاعات رستوران</span>
+        </button>
+        <div class="components-and-info">
+          <div class="components-part">
+            <div class="main-right-nav-order-sub-menu-icons-total sticky">
+              <a id="kabab-nav"
+                ><div class="main-right-nav-order-sub-menu-kabab">
+                  <img src="./Images/Icons/icon-kebab.png" alt="kabab icon" /><span>کباب</span>
+                </div></a
+              >
+              <a id="complex-menu-nav">
+                <div class="main-right-nav-order-sub-menu-combination">
+                  <img src="./Images/Icons/icon-default.png" alt="combination menu icon" /><span>منوی ترکیبی</span>
+                </div></a
+              >
+              <a id="starter-nav"
+                ><div class="main-right-nav-order-sub-menu-salad">
+                  <img src="./Images/Icons/icon-salad.png" alt="starter icon" /><span>پیش غذا</span>
+                </div></a
+              >
+              <a id="drink-nav"
+                ><div class="main-right-nav-order-sub-menu-beverage">
+                  <img src="./Images/Icons/icon-beverage.png" alt="beverage icon" /><span>نوشیدنی</span>
+                </div></a
+              >
+            </div>
+            <div class="main-right-nav-search">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                />
+              </svg>
+              <input type="text" placeholder="جست و جوی سریع" />
+            </div>
+            <h2 id="kabab">کباب</h2>
+            <div class="main-right-nav-component-total" id="components-start">
+              <!-- kabab -->
+              <!-- first component card  -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/main-cource/kabab-shemrooni-1.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب لقمه گوسفندی شمرون</p>
+                    <span>۶۵۰,۰۰۰</span> <span>تومان</span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ کباب لقمه 250 گرمی و یک سیخ جوجه فیله 500 گرمی ، نان تازه داغ ، گوجه فرنگی ، فلفل کبابی ،
+                    ریحان تازه ، پیاز
+                  </p>
+                </div>
+              </div>
+              <!-- second component card  -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/main-cource/jooje-file-2.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>جوجه کباب فیله شمرون</p>
+                    <span>۳۷۰,۰۰۰</span> <span>تومان</span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>یک سیخ جوجه بدون استخوان فیله ذغالی(500 گرم)،گوجه فرنگی،فلفل کبابی،ریحان تازه،سس انار،پیاز قرمز</p>
+                </div>
+              </div>
+              <!-- third component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/main-cource/jooje-file-bone-3.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>جوجه با استخوان شمرون</p>
+                    <span>۳۷۰,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>یک سیخ جوجه بااستخوان ذغالی(700 گرم)،گوجه فرنگی،فلفل کبابی،ریحان تازه،سس انار،پیاز قرمز</p>
+                </div>
+              </div>
+              <!-- fourth component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/main-cource/jooje-zoghali-4.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>جوجه کباب ران شمرون</p>
+                    <span>۳۷۰,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ جوجه بدون استخوان ران ذغالی(500 گرم)،نان تازه داغ،گوجه فرنگی،فلفل کبابی،ریحان تازه،سس
+                    انار،پیاز قرمز
+                  </p>
+                </div>
+              </div>
+              <!-- fifth component card-->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/main-cource/kabab-barre-4.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب بره شمرون</p>
+                    <span>۸۷۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>یک سیخ راسته بره ذغالی(380 گرم)،گوجه فرنگی،فلفل کبابی،ریحان تازه،ترشی انبه،پیاز قرمز</p>
+                </div>
+              </div>
+              <!-- sixth component card-->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/main-cource/shishlik-6.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>شیشلیک شمرون</p>
+                    <span>۸۷۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>یک سیخ شیشلیک ذغالی(500 گرم)،گوجه فرنگی،فلفل کبابی،ریحان تازه،ترشی انبه،پیاز قرمز</p>
+                </div>
+              </div>
+              <!-- seventh component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/main-cource/family-7.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>میکس کباب خانواده</p>
+                    <span>۲,۷۰۰,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    دوسیخ لقمه گوسفندی،یک سیخ جوجه بدون استخوان،یک سیخ جوجه با استخوان،یک سیخ شیشلیک و یک سیخ راسته بره
+                  </p>
+                </div>
+              </div>
+              <!-- eighth component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/main-cource/chlo-kare-8.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>چلو کره</p>
+                    <span>۱۲۰,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- ninth component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/main-cource/gooje-ezafe-9.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>گوجه اضافه</p>
+                    <span>۲۰,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>یک سیخ گوجه کبابی</p>
+                </div>
+              </div>
+            </div>
+            <h2 id="complex-menu">منوی ترکیبی</h2>
+            <div class="main-right-nav-component-total">
+              <!-- complex menus -->
+              <!-- first component card  -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/complex-menu/vaziri-1.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب وزیری</p>
+                    <span>۶۴۵,۰۰۰</span> <span>تومان</span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ کباب لقمه 250 گرمی و یک سیخ جوجه فیله 500 گرمی ، نان تازه داغ ، گوجه فرنگی ، فلفل کبابی ،
+                    ریحان تازه ، پیاز
+                  </p>
+                </div>
+              </div>
+              <!-- second component card  -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/complex-menu/amiri-2.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب امیری</p>
+                    <span>۱,۱۹۵,۰۰۰</span> <span>تومان</span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ جوجه فیله 500 گرمی و یک سیخ شیشلیک 500 گرمی، نان تازه داغ ، گوجه فرنگی ، فلفل کبابی ، ریحان
+                    تازه ، پیاز
+                  </p>
+                </div>
+              </div>
+              <!-- third component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/complex-menu/darbari-3.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب درباری</p>
+                    <span>۱,۱۹۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ جوجه با استخوان (جوجه کامل) و یک سیخ راسته بره 400 گرمی ، نان تازه داغ ، گوجه فرنگی ، فلفل
+                    کبابی ، ریحان تازه ، پیاز
+                  </p>
+                </div>
+              </div>
+              <!-- fourth component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/complex-menu/mozafari-4.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب مظفری</p>
+                    <span>۱,۱۵۰,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ لقمه 250 گرمی و یک سیخ شیشلیک 500 گرمی ، نان تازه داغ ، گوجه فرنگی ، فلفل کبابی ، ریحان تازه
+                    ، پیاز
+                  </p>
+                </div>
+              </div>
+              <!-- fifth component card-->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/complex-menu/shahi-5.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب شاهی</p>
+                    <span>۱,۶۱۵,۰۰۰ </span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ شیشلیک 500 گرمی و یک سیخ راسته بره 400 گرمی ، نان تازه داغ ، گوجه فرنگی ، فلفل کبابی ، ریحان
+                    تازه ، پیاز
+                  </p>
+                </div>
+              </div>
+              <!-- sixth component card-->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/complex-menu/salari-6.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب سالاری</p>
+                    <span>۶۴۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ لقمه 250 گرمی و یک سیخ جوجه ران 500 گرمی ، نان تازه داغ ، گوجه فرنگی ، فلفل کبابی ، ریحان
+                    تازه ، پیاز
+                  </p>
+                </div>
+              </div>
+              <!-- seventh component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <div class="component-card-white-overlay"></div>
+                  <img src="./Images/complex-menu/soltani-7.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب سلطانی</p>
+                    <span>۱,۱۵۰,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p>
+                    یک سیخ لقمه 250 گرمی و یک سیخ کباب بره 400 گرمی ، نان تازه داغ ، گوجه فرنگی ، فلفل کبابی ، ریحان
+                    تازه ، پیاز
+                  </p>
+                </div>
+              </div>
+              <!-- eighth component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/complex-menu/shekari-8.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>کباب شکاری</p>
+                    <span>۶۴۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+            <!-- starter -->
+            <h2 id="starter">پیش غذا</h2>
+            <div class="main-right-nav-component-total">
+              <!-- first component card  -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/starter/zeytoon-1.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>زیتون</p>
+                    <span>۱۵۵,۰۰۰</span> <span>تومان</span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- second component card  -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/starter/boorani-2.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>بورانی اسفناج</p>
+                    <span>۷۵,۰۰۰</span> <span>تومان</span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- third component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/starter/boorani-bademjan-3.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>بورانی بادمجان</p>
+                    <span>۷۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- fourth component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/starter/mast-khiar-4.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>ماست خیار</p>
+                    <span>۷۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- fifth component card-->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/starter/mast-moosir-5.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>ماست موسیر</p>
+                    <span>۷۵,۰۰۰ </span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- sixth component card-->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/starter/mast-shivid-6.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>ماست شوید</p>
+                    <span>۷۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+            <!-- drink -->
+            <h2 id="drink">نوشیدنی</h2>
+            <div class="main-right-nav-component-total drinks">
+              <!-- first component card  -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/drinks/doogh-1.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>دوغ محلی</p>
+                    <span>۲۵,۰۰۰</span> <span>تومان</span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- second component card  -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/drinks/ab-2.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>آب معدنی</p>
+                    <span>۶,۰۰۰</span> <span>تومان</span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- third component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/drinks/nooshabe-3.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>نوشابه</p>
+                    <span>۶,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+              <!-- fourth component card -->
+              <div class="component-card">
+                <div class="component-card-top">
+                  <img src="./Images/drinks/delester-4.jpg" alt="kabab shemrooni" />
+                </div>
+                <div class="component-card-down">
+                  <div class="component-card-name-and-price">
+                    <p>ماءالشعیر قوطی هی دی استوایی</p>
+                    <span>۲۵,۰۰۰</span> <span>تومان </span>
+                  </div>
+                  <div class="component-card-add-btn">
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="component-card-ingredient">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <!-- TODO: -->
+          <div class="info-part hidden">
+            <div class="info-part-top">
+              <p>سرویس دهی آنلاین</p>
+              <table class="info-part-top-table">
+                <tr>
+                  <th>روزها</th>
+                  <th>صبحانه</th>
+                  <th>ناهار</th>
+                  <th>شام</th>
+                </tr>
+                <tr>
+                  <td>شنبه</td>
+                  <td>-</td>
+                  <td class="td-lunch">-</td>
+                  <td class="td-dinner">۱۱:۰۰ تا ۰۰:۴۵</td>
+                </tr>
+                <tr>
+                  <td>یک شنبه</td>
+                  <td>-</td>
+                  <td class="td-lunch">-</td>
+                  <td class="td-dinner">۱۱:۰۰ تا ۰۰:۴۵</td>
+                </tr>
+                <tr>
+                  <td>دو شنبه</td>
+                  <td>-</td>
+                  <td class="td-lunch">-</td>
+                  <td class="td-dinner">۱۱:۰۰ تا ۰۰:۴۵</td>
+                </tr>
+                <tr>
+                  <td>سه شنبه</td>
+                  <td>-</td>
+                  <td class="td-lunch">-</td>
+                  <td class="td-dinner">۱۱:۰۰ تا ۰۰:۴۵</td>
+                </tr>
+                <tr>
+                  <td>چهار شنبه</td>
+                  <td>-</td>
+                  <td class="td-lunch">-</td>
+                  <td class="td-dinner">۱۱:۰۰ تا ۰۰:۴۵</td>
+                </tr>
+                <tr>
+                  <td>پنج شنبه</td>
+                  <td>-</td>
+                  <td class="td-lunch">-</td>
+                  <td class="td-dinner">۱۱:۰۰ تا ۰۰:۴۵</td>
+                </tr>
+                <tr>
+                  <td>جمعه</td>
+                  <td>-</td>
+                  <td class="td-lunch">-</td>
+                  <td class="td-dinner">۱۱:۰۰ تا ۰۰:۴۵</td>
+                </tr>
+              </table>
+            </div>
+            <div class="info-part-down">
+              <p class="info-part-down-address-title">آدرس رستوران</p>
+              <p class="info-part-down-address">میدان تجریش، ضلع شمال شرقی</p>
+              <div class="info-part-down-phones">
+                <span>تلفن:</span> <span> ۱۷۷۵ </span> <span class="phone">۲۲۷۴۰۰۸</span>
+              </div>
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- including -->
+      <div class="main-left-including sticky hidden">
+        <div class="main-left-including-top">
+          <div>
+            <span>سبد خرید</span>
+            <span>(<span class="total-count"></span>)</span>
+          </div>
+          <div class="recyle-basket">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="main-left-including-middle"></div>
+        <div class="main-left-including-down">
+          <div>
+            <span>هزینه ی کل</span>
+            <span class="total-price"></span> <span>تومان</span>
+          </div>
+          <span class="off">کد تخفیف دارید ؟ </span>
+          <button>تکمیل سفارش</button>
+        </div>
+      </div>
+      <!-- end of including -->
+      <div class="main-left sticky">
+        <p class="main-left-basket-top">سبد خرید</p>
+        <div class="main-left-basket-down">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
+            />
+          </svg>
+          <p>سبد خرید خالی است</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <div class="footer-top">
+          <div class="footer-top-right">
+            <span> &copy;حقوق مادی و معنوی متعلق به </span>
+            <span class="shemroon-kabab-footer">شمرون کباب</span>
+            <span>است.</span>
+          </div>
+          <div class="footer-top-left">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
+              <path
+                d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h10v-9h-3v-3h3v-1.611C16,9.339,17.486,8,20.021,8 c1.214,0,1.856,0.09,2.16,0.131V11h-1.729C19.376,11,19,11.568,19,12.718V14h3.154l-0.428,3H19v9h5c1.105,0,2-0.895,2-2V6 C26,4.895,25.104,4,24,4z"
+              ></path>
+            </svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+              <path
+                d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div class="footer-down">
+          <img src="./Logos/bazar-logo.png" alt="bazar logo" />
+          <img src="./Logos/sibche-logo.png" alt="sibche logo" />
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
